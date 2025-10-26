@@ -1,4 +1,4 @@
-table Products
+table Dim_Products
 	lineageTag: 94b625d6-5948-4919-8c8f-300329be6a71
 
 	column ProductID
@@ -96,7 +96,7 @@ table Products
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Products-bb6ab335-6c24-4403-bd2e-6da1e29a9fd8 = m
+	partition Dim_Products-bb6ab335-6c24-4403-bd2e-6da1e29a9fd8 = m
 		mode: import
 		source =
 				let
@@ -104,6 +104,8 @@ table Products
 				    Products_table = Source{[Name="Products",Signature="table"]}[Data]
 				in
 				    Products_table
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

@@ -1,7 +1,7 @@
-table Order_Details
+table Fact_Order_Details
 	lineageTag: 493b4392-aad5-4f52-86d6-17124e225317
 
-	measure Revenue = sumx(Order_Details,Order_Details[Quantity]*Order_Details[UnitPrice])
+	measure Revenue = sumx(Fact_Order_Details,Fact_Order_Details[Quantity]*Fact_Order_Details[UnitPrice])
 		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
 		lineageTag: c335ee36-5377-44cd-848e-4827ee9016f4
 
@@ -61,7 +61,7 @@ table Order_Details
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition Order_Details-d7c5ad66-6959-47f5-92e4-645f5e55bdf4 = m
+	partition Fact_Order_Details-d7c5ad66-6959-47f5-92e4-645f5e55bdf4 = m
 		mode: import
 		source =
 				let
@@ -69,6 +69,8 @@ table Order_Details
 				    Order_Details_table = Source{[Name="Order_Details",Signature="table"]}[Data]
 				in
 				    Order_Details_table
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

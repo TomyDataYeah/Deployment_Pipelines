@@ -1,0 +1,22 @@
+table '0.1 Measures'
+	lineageTag: 2f82009b-591f-4fdf-8d24-5578a5d38545
+
+	measure Total_sales = SUMX(Fact_Order_Details, Fact_Order_Details[Quantity]*Fact_Order_Details[UnitPrice])
+		lineageTag: 2eab6b96-7847-4499-b6ee-e30a0361f93c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition '0.1 Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

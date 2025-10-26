@@ -1,4 +1,4 @@
-table Orders
+table Fact_Orders
 	lineageTag: 7a163937-5757-4be4-9416-85428e2680c9
 
 	column OrderID
@@ -146,7 +146,7 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Orders-611be5d7-ed50-4633-aec8-05b1f0cfda73 = m
+	partition Fact_Orders-611be5d7-ed50-4633-aec8-05b1f0cfda73 = m
 		mode: import
 		source =
 				let
@@ -155,6 +155,8 @@ table Orders
 				    #"Renamed Columns" = Table.RenameColumns(Orders_table,{{"ShippedDate", "Shipped Date"}})
 				in
 				    #"Renamed Columns"
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

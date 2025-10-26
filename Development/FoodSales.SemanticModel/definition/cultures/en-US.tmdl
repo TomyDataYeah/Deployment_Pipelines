@@ -4,12 +4,11 @@ cultureInfo en-US
 			{
 			  "Version": "2.0.0",
 			  "Language": "en-US",
-			  "DynamicImprovement": "HighConfidence",
 			  "Entities": {
 			    "order_details.revenue": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Order_Details",
+			          "ConceptualEntity": "Fact_Order_Details",
 			          "ConceptualProperty": "Revenue"
 			        }
 			      },
@@ -30,7 +29,7 @@ cultureInfo en-US
 			    "products.productname": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Products",
+			          "ConceptualEntity": "Dim_Products",
 			          "ConceptualProperty": "ProductName"
 			        }
 			      },
