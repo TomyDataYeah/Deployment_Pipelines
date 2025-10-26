@@ -6,6 +6,16 @@ table '0.1 Measures'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure maximum_order_Value =
+			
+			var orders_id = VALUES(Fact_Orders)
+			RETURN MAXX(orders_id,
+			            CALCULATE([Total_sales])
+			            )
+		lineageTag: c68447fb-1a10-4913-968f-e42d0b74b408
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition '0.1 Measures' = m
 		mode: import
 		source =
