@@ -1,7 +1,7 @@
-table Categories
+table Dim_Categories
 	lineageTag: 99508c15-e8e6-42d8-871b-35fabdada4c1
 
-	measure 'Category Title' = SELECTEDVALUE(Categories[CategoryName], DISTINCTCOUNT(Categories[CategoryName]) & " Selected")
+	measure 'Category Title' = SELECTEDVALUE(Dim_Categories[CategoryName], DISTINCTCOUNT(Dim_Categories[CategoryName]) & " Selected")
 		lineageTag: 4167b6a7-9764-4836-9274-9278af7097a4
 
 	column CategoryID
@@ -32,7 +32,7 @@ table Categories
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Categories-b60d3cb7-f94d-4509-86d5-3c19b692b7ff = m
+	partition Dim_Categories-b60d3cb7-f94d-4509-86d5-3c19b692b7ff = m
 		mode: import
 		source =
 				let
@@ -40,6 +40,8 @@ table Categories
 				    Categories_table = Source{[Name="Categories",Signature="table"]}[Data]
 				in
 				    Categories_table
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

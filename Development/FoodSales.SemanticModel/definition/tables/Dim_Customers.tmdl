@@ -1,4 +1,4 @@
-table Customers
+table Dim_Customers
 	lineageTag: 8e47b52e-1c1a-4029-b6cc-25200d213fcf
 
 	column CustomerID
@@ -92,7 +92,7 @@ table Customers
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Customers-45ba0a1e-6421-4591-9a6e-0c798d5dc433 = m
+	partition Dim_Customers-45ba0a1e-6421-4591-9a6e-0c798d5dc433 = m
 		mode: import
 		source =
 				let
@@ -101,6 +101,8 @@ table Customers
 				    #"Replaced Value" = Table.ReplaceValue(Customers_table,null,"US",Replacer.ReplaceValue,{"Region"})
 				in
 				    #"Replaced Value"
+
+	changedProperty = Name
 
 	annotation PBI_NavigationStepName = Navigation
 

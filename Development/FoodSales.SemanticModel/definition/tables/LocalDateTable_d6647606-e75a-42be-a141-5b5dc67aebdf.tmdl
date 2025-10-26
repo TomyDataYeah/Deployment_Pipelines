@@ -98,7 +98,7 @@ table LocalDateTable_d6647606-e75a-42be-a141-5b5dc67aebdf
 
 	partition LocalDateTable_d6647606-e75a-42be-a141-5b5dc67aebdf-026140cd-1380-4013-b2fd-cf5dedd6fef1 = calculated
 		mode: import
-		source = Calendar(Date(Year(MIN('Orders'[RequiredDate])), 1, 1), Date(Year(MAX('Orders'[RequiredDate])), 12, 31))
+		source = Calendar(Date(Year(MIN('Fact_Orders'[RequiredDate])), 1, 1), Date(Year(MAX('Fact_Orders'[RequiredDate])), 12, 31))
 
 	annotation __PBI_LocalDateTable = true
 
